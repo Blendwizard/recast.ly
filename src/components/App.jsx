@@ -1,20 +1,20 @@
 import VideoList from './VideoList.js';
 import exampleVideoData from '/src/data/exampleVideoData.js';
 import VideoPlayer from './VideoPlayer.js';
-
+import searchYouTube from '/src/lib/searchYouTube.js';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentVideo: exampleVideoData[0]
+      currentVideo: {}
     };
   }
 
   // Handle change in currentVideo state
   clickVideo(targetVideo) {
     this.setState({
-      currentVideo: targetVideo
+      currentVideo: {}
     });
   }
 
@@ -39,6 +39,12 @@ class App extends React.Component {
       </div>
     );
   }
+
+  componentDidMount() {
+
+    searchYouTube(query, callback);
+  }
+
 }
 // In the ES6 spec, files are "modules" and do not share a top-level scope
 // `var` declarations will only exist globally where explicitly defined
